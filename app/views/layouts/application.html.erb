@@ -1,16 +1,67 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="ja">
   <head>
-    <title>Reservationmyapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  
+    </head>
   <body>
-    <%= yield %>
-  </body>
-</html>
+
+  <!-- navbar section -->
+  <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Potepan Share</a>
+
+
+
+  <% if user_signed_in? %>
+  
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+  <!-- タイトル -->
+  <a class="navbar-brand" href="#">サイトタイトル</a>
+  <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <%= current_user.name %>
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">施設の新規登録</a>
+    <a class="dropdown-item" href="#">予約済み一覧</a>
+    <a class="dropdown-item" href="#">登録済み一覧</a>
+    <a class="dropdown-item"><%= link_to "アカウント" %></a>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    
+  </div>
+</div>
+</nav>
+
+    
+  </div>
+    <% else %>
+    <div class="text-right">
+    <a button type="button" class="btn btn-primary" href="/users/sign_in" >ログイン</button></a>
+    <a button type="button" class="btn btn-secondary" href="/users/sign_up">新規登録</button></a>
+</div>
+    <% end %>
+</nav>
+
+
+
+
+
+
+  
+<%= yield %>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
